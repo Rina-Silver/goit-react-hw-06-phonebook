@@ -1,0 +1,25 @@
+@import 'styles/shared.scss';
+
+.nameItem {
+  display: flex;
+  align-items: center;
+}
+
+.Contact__btn {
+  @extend %button;
+  margin-left: 10px;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background-color: $red;
+  color: $white;
+  font-weight: 500;
+
+  &:hover,
+  &:focus {
+    background-color: $red-accent;
+  }
+
+  &:active {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  }
+}
