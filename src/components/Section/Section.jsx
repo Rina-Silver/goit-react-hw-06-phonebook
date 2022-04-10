@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import './Section.scss';
 
 function Section({ title, children }) {
     return (

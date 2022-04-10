@@ -1,18 +1,15 @@
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { getVisibleContacts } from '../../redux/contacts/contacts-selector';
 import ContactItem from './ContactItem';
 import './ContactList.scss';
 
-const ContactList = ({ contacts, onDelete }) => {
+const ContactList = () => {
+  const contacts = useSelector(getVisibleContacts);
   return contacts.length > 0 ? (
     <ul className="nameList">
       {contacts.map(({ id, name, number }) => (
         <li className="nameItem" key={id}>
-          <ContactItem
-            name={name}
-            number={number}
-            id={id}
-            onDelete={onDelete}
-          />
+          <ContactItem name={name} number={number} id={id} />
         </li>
       ))}
     </ul>
@@ -21,17 +18,6 @@ const ContactList = ({ contacts, onDelete }) => {
       <p>No contacts</p>
     </>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    }).isRequired,
-  ),
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default ContactList;
